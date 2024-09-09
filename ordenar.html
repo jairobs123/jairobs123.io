@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/estiloPrincipal.css">
+    <link rel="stylesheet" href="js/ordenar.js">
+</head>
+<body class="contenedor">
+    <nav class="navbar">
+        <input type="checkbox" id="btn-menu">
+        <label for="btn-menu"><img src="img/Iconos/btn-menu.png" alt="Menú"></label>
+        
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="#">HISTORIA</a></li>
+                <li><a href="galeria.html">GALERÍA</a></li>
+                <li><a href="#">APLICACIONES</a>
+                    <ul class="submenu">
+                        <li><a href="calculadora.html">CALCULADORA</a></li>
+                        <li><a href="ordenar.html">ORDENA NÚMEROS</a></li>
+                        <li><a href="#">CONDICIONALES</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">CONTACTO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="main">
+        <h2>ORDENAR NÚMEROS</h2>
+        <p>Ingrese 3 números aleatorios:</p>
+
+        <form id="form" name="form">
+            <label for="txtUno">Número 1:</label><br>
+            <input type="number" id="txtUno" name="txtUno" required><br><br>
+
+            <label for="txtDos">Número 2:</label><br>
+            <input type="number" id="txtDos" name="txtDos" required><br><br>
+
+            <label for="txtTres">Número 3:</label><br>
+            <input type="number" id="txtTres" name="txtTres" required><br><br>
+
+            <input type="button" value="Ordenar" onclick="ordenar()"><br><br>
+
+            <label for="txtMayor">Mayor:</label>
+            <input type="text" id="txtMayor" name="txtMayor" placeholder="Mayor" readonly><br>
+
+            <label for="txtMedio">Medio:</label>
+            <input type="text" id="txtMedio" name="txtMedio" placeholder="Medio" readonly><br>
+
+            <label for="txtMenor">Menor:</label>
+            <input type="text" id="txtMenor" name="txtMenor" placeholder="Menor" readonly><br>
+        </form>
+    </section>
+
+    <aside class="sidebar">
+        <div class="face">
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcolegiolaauroradeheredia&tabs=timeline&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" style="border:none; overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>  
+    </aside>
+
+    <footer class="footer">
+        <p>Liceo la Aurora</p>
+        <p>La Aurora</p>
+        <p>&copy; 2024</p>
+    </footer>
+    
+    <script>
+        function ordenar() {
+            let num1 = parseInt(document.getElementById('txtUno').value);
+            let num2 = parseInt(document.getElementById('txtDos').value);
+            let num3 = parseInt(document.getElementById('txtTres').value);
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                alert('Por favor, ingresa los tres números.');
+                return;
+            }          
+            let numeros = [num1, num2, num3];
+            numeros.sort(function(a, b) {
+                return b - a;
+            });           
+            document.getElementById('txtMayor').value = numeros[0];
+            document.getElementById('txtMedio').value = numeros[1];
+            document.getElementById('txtMenor').value = numeros[2];
+        }
+    </script>
+</body>
+</html>
